@@ -475,7 +475,7 @@ main(int argc, char **argv)
      /* Date format */
      ttyclock->option.format = malloc(sizeof(char) * 100);
      /* Default date format */
-     strncpy(ttyclock->option.format, "%d/%m/%Y", 100);
+     strncpy(ttyclock->option.format, "%a %d %b %Y", 100);
      /* Default color */
      ttyclock->option.color = COLOR_GREEN; /* COLOR_GREEN = 2 */
      /* Default bottom pos */
