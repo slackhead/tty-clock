@@ -100,6 +100,7 @@ init(void)
      }
 
      set_center(ttyclock->option.center);
+     set_bottom(ttyclock->option.bottom);
 
      nodelay(stdscr, True);
 
@@ -354,6 +355,24 @@ set_center(Bool b)
 }
 
 void
+set_bottom(Bool b)
+{
+    if (b == True)
+        printf("%s", "True");
+     if((ttyclock->option.bottom = b))
+     {
+          ttyclock->option.rebound = False;
+
+          clock_move((LINES - ttyclock->geo.h - 2),
+                     (COLS - ttyclock->geo.w),
+                     ttyclock->geo.w,
+                     ttyclock->geo.h);
+     }
+
+     return;
+}
+
+void
 key_event(void)
 {
      int i, c;
@@ -417,6 +436,11 @@ key_event(void)
           set_center(!ttyclock->option.center);
           break;
 
+     case 'b':
+     case 'B':
+          set_bottom(!ttyclock->option.bottom);
+          break;
+
      case 'r':
      case 'R':
           ttyclock->option.rebound = !ttyclock->option.rebound;
@@ -454,20 +478,23 @@ main(int argc, char **argv)
      strncpy(ttyclock->option.format, "%d/%m/%Y", 100);
      /* Default color */
      ttyclock->option.color = COLOR_GREEN; /* COLOR_GREEN = 2 */
+     /* Default bottom pos */
+     ttyclock->option.bottom = False;
      /* Default delay */
      ttyclock->option.delay = 40000000; /* 25FPS */
      /* Default blink */
      ttyclock->option.blink = False;
 
-     while ((c = getopt(argc, argv, "tvsrcihfDBd:C:")) != -1)
+     while ((c = getopt(argc, argv, "tvsrcbihfDBd:C:")) != -1)
      {
           switch(c)
           {
           case 'h':
           default:
-               printf("usage : tty-clock [-sctrvihDB] [-C [0-7]] [-f format]            \n"
+               printf("usage : tty-clock [-scbtrvihDB] [-C [0-7]] [-f format]           \n"
                       "    -s            Show seconds                                   \n"
                       "    -c            Set the clock at the center of the terminal    \n"
+                      "    -b            Set the clock at the bottom of the terminal    \n"
                       "    -C [0-7]      Set the clock color                            \n"
                       "    -t            Set the hour in 12h format                     \n"
                       "    -r            Do rebound the clock                           \n"
@@ -498,6 +525,9 @@ main(int argc, char **argv)
                break;
           case 'c':
                ttyclock->option.center = True;
+               break;
+          case 'b':
+               ttyclock->option.bottom = True;
                break;
           case 'C':
                if(atoi(optarg) >= 0 && atoi(optarg) < 8)

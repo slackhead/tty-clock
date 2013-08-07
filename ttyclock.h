@@ -63,6 +63,7 @@ typedef struct
           Bool second;
           Bool twelve;
           Bool center;
+          Bool bottom;
           Bool rebound;
           Bool date;
           char *format;
@@ -108,6 +109,7 @@ void draw_clock(void);
 void clock_move(int x, int y, int w, int h);
 void set_second(void);
 void set_center(Bool b);
+void set_bottom(Bool b);
 void key_event(void);
 
 /* Global variable */
