@@ -3,6 +3,8 @@
  *      Copyright © 2008 Martin Duquesnoy <xorg62@gmail.com>
  *      All rights reserved.
  *
+ *      Modifications 2014 © Dave Woodfall
+ *
  *      Redistribution and use in source and binary forms, with or without
  *      modification, are permitted provided that the following conditions are
  *      met:
@@ -364,7 +366,7 @@ set_bottom(Bool b)
           ttyclock->option.rebound = False;
 
           clock_move((LINES - ttyclock->geo.h - 2),
-                     (COLS - ttyclock->geo.w),
+                     (COLS - ttyclock->geo.w - 2),
                      ttyclock->geo.w,
                      ttyclock->geo.h);
      }
