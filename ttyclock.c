@@ -3,7 +3,7 @@
  *      Copyright © 2008 Martin Duquesnoy <xorg62@gmail.com>
  *      All rights reserved.
  *
- *      Modifications 2014 © Dave Woodfall
+ *      Modifications 2013 © Dave Woodfall
  *
  *      Redistribution and use in source and binary forms, with or without
  *      modification, are permitted provided that the following conditions are
