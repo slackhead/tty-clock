@@ -1,3 +1,9 @@
+This is a fork of tty-clock by Martin Duquesnoy <xorg62@gmail.com>.
+
+I have added a -b option to show the clock at the bottom right of the
+terminal.
+
+
 usage : tty-clock [-sctrvihDB] [-C [0-7]] [-f format]            
     -s            Show seconds                                   
     -c            Set the clock at the center of the terminal    
