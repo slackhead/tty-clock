@@ -359,8 +359,6 @@ set_center(Bool b)
 void
 set_bottom(Bool b)
 {
-    if (b == True)
-        printf("%s", "True");
      if((ttyclock->option.bottom = b))
      {
           ttyclock->option.rebound = False;
